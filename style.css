@@ -1,86 +1,88 @@
-/* --- 全局基础 --- */
+/* --- 基础重置 --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: #000;
     color: #999; /* 高级灰 */
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    height: 100vh; /* 强制全屏高度，防止乱滚动 */
+    height: 100vh; /* 锁定全屏高度 */
+    overflow: hidden; /* 禁止滚动条 */
     display: flex;
     flex-direction: column;
 }
 
 /* --- 导航栏 --- */
 .navbar {
-    flex: 0 0 auto; /* 导航栏高度固定 */
+    flex: 0 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 60px 5%;
+    padding: 60px 60px;
     height: 140px;
 }
 
-.logo { font-size: 1.1rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
+.logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
 .nav-links { display: flex; list-style: none; gap: 30px; }
 .nav-links a { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #666; text-decoration: none; transition: 0.3s; }
 .nav-links a:hover { color: #fff; }
 
-/* --- 核心左右布局 --- */
-.home-split-layout {
-    flex: 1; /* 占据剩余高度 */
+/* --- 核心布局：左右分栏 --- */
+.split-container {
+    flex: 1; /* 填满剩余高度 */
     display: flex;
-    align-items: center; /* 垂直居中对齐 */
-    padding: 0 5%; /* 左右边距 */
-    gap: 60px; /* 左右两块的间距 */
-    max-width: 1800px;
-    margin: 0 auto;
-    width: 100%;
+    align-items: center; /* 垂直居中 */
+    padding: 0 60px 60px; /* 左右边距 */
+    gap: 80px; /* 左右内容之间的间隙 */
 }
 
-/* --- 左侧区域 --- */
-.left-content {
-    width: 38%; /* 左侧稍微窄一点，留给视频更多空间 */
+/* --- 左侧 (文字) --- */
+.left-pane {
+    width: 38%; /* 左侧占 38% */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
 }
 
-.intro { 
-    font-size: 0.95rem; 
-    margin-bottom: 40px; 
-    color: #aaa; 
-    text-align: justify; /* 文字两端对齐，更整齐 */
+.intro-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #aaa;
+    margin-bottom: 40px;
 }
 
-.skills-group { margin-bottom: 60px; }
-.label { color: #fff; font-weight: 700; display: block; margin-bottom: 8px; font-size: 0.9rem;}
-.skills-list { font-size: 0.85rem; color: #777; }
+.skills-section { margin-bottom: 60px; }
+.skills-label { color: #fff; font-weight: 700; display: block; margin-bottom: 10px; font-size: 0.9rem;}
+.skills-list { font-size: 0.85rem; color: #777; line-height: 1.5; }
 
-/* 社交链接 */
-.social-bottom {
+/* 链接部分 */
+.contact-links {
+    margin-top: auto; /* 确保链接在下方 */
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 1px;
 }
-.social-bottom a { color: #fff; text-decoration: none; transition: color 0.3s; }
-.social-bottom a:hover { color: #aaa; }
-.slash { margin: 0 10px; color: #333; }
+.contact-links a { color: #fff; text-decoration: none; }
+.contact-links a:hover { color: #888; }
+.sep { margin: 0 10px; color: #444; }
 
 
-/* --- 右侧区域 (大视频) --- */
-.right-content {
-    width: 62%; /* 右侧占据更大空间 */
+/* --- 右侧 (视频) --- */
+.right-pane {
+    width: 62%; /* 右侧占 62% - 很大的展示空间 */
+    height: 100%;
+    display: flex;
+    align-items: center; /* 确保视频在右侧也是垂直居中 */
 }
 
-.video-wrapper {
+.video-box {
     width: 100%;
-    aspect-ratio: 16 / 9; /* 锁定 16:9 比例 */
-    background: #000;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* 给视频加一点悬浮阴影 */
+    aspect-ratio: 16 / 9;
+    background: #111;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
-.video-wrapper iframe {
+.video-box iframe {
     width: 100%;
     height: 100%;
     border: none;
@@ -88,12 +90,12 @@ body {
 
 /* --- 手机适配 --- */
 @media (max-width: 1024px) {
-    body { height: auto; display: block; }
-    .home-split-layout {
-        flex-direction: column-reverse; /* 手机上视频在上面，文字在下面 */
-        padding: 40px 5%;
+    body { overflow-y: auto; height: auto; display: block; }
+    .split-container {
+        flex-direction: column-reverse; /* 手机上视频在上面 */
+        padding: 40px;
         gap: 40px;
     }
-    .left-content, .right-content { width: 100%; }
-    .navbar { padding: 40px 5%; }
+    .left-pane, .right-pane { width: 100%; }
+    .navbar { padding: 40px; }
 }
