@@ -4,50 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motion | Sarah Zhao</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="site-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">SARAH ZHAO</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="motion.html" class="active">Motion</a></li>
-                    <li><a href="animation.html">Animation</a></li>
-                    <li><a href="illustration.html">Illustration</a></li>
-                    <li><a href="about.html">About</a></li>
-                </ul>
-                <button class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <a href="index.html" class="logo">Sarah Zhao</a>
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="motion.html" class="nav-link active">Motion</a>
+                <a href="animation.html" class="nav-link">Animation</a>
+                <a href="illustration.html" class="nav-link">Illustration</a>
+                <a href="about.html" class="nav-link">About</a>
             </nav>
+            <button class="hamburger" onclick="toggleMenu()">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </button>
         </div>
     </header>
-    <div class="mobile-nav"></div>
+    <div class="mobile-menu" id="mobileMenu"></div>
 
     <main class="container">
-        <div class="page-header">
-            <h1>Motion</h1>
+        <div class="hero-split" style="padding-bottom: 40px;">
+            <div class="hero-bio">
+                <h1><strong>Motion Projects.</strong><br>Selected works 2023-2025.</h1>
+            </div>
         </div>
 
-        <div class="grid-gallery">
+        <div class="grid-2col">
             <a href="motion/project-01.html" class="card">
-                <div class="media-placeholder">▶ Play Preview (Project 01)</div>
+                <div class="media-box">Project 01 Preview</div>
+                <div class="card-info">
+                    <div class="card-title">Project Title 01</div>
+                    <div class="card-sub">Motion Design</div>
+                </div>
             </a>
             <a href="motion/project-02.html" class="card">
-                <div class="media-placeholder">▶ Play Preview (Project 02)</div>
+                <div class="media-box">Project 02 Preview</div>
+                <div class="card-info"><div class="card-title">Project Title 02</div></div>
             </a>
             <a href="motion/project-03.html" class="card">
-                <div class="media-placeholder">▶ Play Preview (Project 03)</div>
+                <div class="media-box">Project 03 Preview</div>
+                <div class="card-info"><div class="card-title">Project Title 03</div></div>
             </a>
             <a href="motion/project-04.html" class="card">
-                <div class="media-placeholder">▶ Play Preview (Project 04)</div>
+                <div class="media-box">Project 04 Preview</div>
+                <div class="card-info"><div class="card-title">Project Title 04</div></div>
             </a>
             <a href="motion/project-05.html" class="card">
-                <div class="media-placeholder">▶ Play Preview (Project 05)</div>
+                <div class="media-box">Project 05 Preview</div>
+                <div class="card-info"><div class="card-title">Project Title 05</div></div>
             </a>
             <a href="motion/project-06.html" class="card">
-                <div class="media-placeholder">▶ Play Preview (Project 06)</div>
+                <div class="media-box">Project 06 Preview</div>
+                <div class="card-info"><div class="card-title">Project Title 06</div></div>
             </a>
         </div>
     </main>
