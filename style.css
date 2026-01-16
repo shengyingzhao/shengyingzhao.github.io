@@ -1,28 +1,34 @@
-/* --- 基础重置 --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* --- 1. 全局基础重置 --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 body {
     background-color: #000;
     color: #fff;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    overflow: hidden; /* 防止首页出现滚动条 */
+    height: 100vh;
+    overflow: hidden; /* 保持首页和关于页不滚动，呈现纯净感 */
 }
 
-/* --- 导航栏 --- */
+/* --- 2. 导航栏 (通用) --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 60px 80px;
-    height: 160px; /* 固定高度确保不被挤压 */
+    padding: 60px 5%;
+    height: 160px; /* 固定高度确保不随内容跳动 */
 }
 
 .logo {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 700;
     letter-spacing: 4px;
+    text-transform: uppercase;
 }
 
 .nav-links {
@@ -30,161 +36,32 @@ body {
     list-style: none;
 }
 
-.nav-links li { margin-left: 40px; }
+.nav-links li { 
+    margin-left: 35px; 
+}
+
 .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: 0.3s;
+    transition: color 0.3s ease;
 }
-.nav-links a:hover { color: #888; }
 
-/* --- 主容器布局 --- */
-.page-wrapper {
-    padding: 0 80px 80px 80px;
+.nav-links a:hover {
+    color: #888;
+}
+
+/* --- 3. 核心布局容器 --- */
+.main-container {
+    display: flex;
+    padding: 0 5% 60px 5%;
     height: calc(100vh - 160px);
+    gap: 10%; /* 文字与视觉内容之间的呼吸感 */
 }
 
-.main-content {
+/* --- 4. 左侧信息栏 (严格锁死宽度) --- */
+.side-info {
+    flex: 0 0 280px; /* 强制锁定宽度，模仿 P2/P4 的质感 */
     display: flex;
-    height: 100%;
-    gap: 80px;
-    align-items: center; /* 垂直居中对齐 */
-}
-
-/* --- 左侧侧边栏 --- */
-.side-bar {
-    flex: 0 0 320px; /* 锁定宽度 */
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* 简介在上，链接在下 */
-    padding: 20px 0;
-}
-
-.intro {
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: #eee;
-    margin-bottom: 30px;
-}
-
-.label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-
-.skills p {
-    font-size: 0.75rem;
-    color: #666;
-}
-
-.social-links {
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
-}
-
-.social-links a {
-    color: #fff;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.social-links a:hover { color: #888; }
-.slash { margin: 0 12px; color: #333; }
-
-/* --- 右侧视频容器：强制比例 --- */
-.video-container {
-    flex: 1; /* 占据剩余空间 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.video-responsive-wrapper {
-    position: relative;
-    width: 100%;
-    /* 16:9 比例锁定 */
-    aspect-ratio: 16 / 9; 
-    max-height: 70vh; /* 确保视频不会长得太高把页面撑破 */
-    background: #000;
-}
-
-.video-responsive-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* 手机端适配 */
-@media (max-width: 1100px) {
-    body { overflow-y: auto; }
-    .navbar { padding: 40px; height: auto; }
-    .page-wrapper { padding: 40px; height: auto; }
-    .main-content { flex-direction: column-reverse; height: auto; gap: 40px; }
-    .side-bar { width: 100%; flex: none; height: auto; }
-}
-
-/* --- About 页面专用扩展 --- */
-
-/* 标题样式 */
-.section-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 5px;
-    margin-bottom: 40px;
-    color: #fff;
-}
-
-/* 联系方式 */
-.contact-box {
-    margin-top: 40px;
-}
-
-.email-link {
-    font-size: 0.85rem;
-    color: #fff;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    cursor: pointer;
-}
-
-/* 右侧图片容器 */
-.image-presentation {
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
-}
-
-.profile-image-wrapper {
-    width: 100%;
-    max-width: 800px; /* 稍微缩一点，增加呼吸感 */
-    aspect-ratio: 4 / 5; /* 这种比例放人像非常高级 */
-    overflow: hidden;
-    background: #111;
-}
-
-.profile-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 确保图片不变形地填满 */
-    filter: grayscale(20%); /* 稍微降一点饱和度，更有设计师味 */
-    transition: filter 0.5s;
-}
-
-.profile-image-wrapper img:hover {
-    filter: grayscale(0%);
-}
-
-/* 导航激活态：让用户知道自己在哪个页 */
-.nav-links a.active {
-    border-bottom: 1px solid #fff;
-    padding-bottom: 5px;
-}
