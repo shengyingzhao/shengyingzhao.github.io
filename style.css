@@ -1,67 +1,99 @@
-/* --- 基础设置 --- */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+/* --- 全局基础 --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: #000;
-    /* 主体文字颜色改为你喜欢的这种灰色 */
-    color: #aaa; 
+    color: #999; /* 高级灰 */
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-}
-
-/* --- 导航栏文字 --- */
-.nav-links a { 
-    /* 导航栏也使用这种灰色，保持统一 */
-    color: #888; 
-    text-decoration: none; 
-    font-size: 0.75rem; 
-    letter-spacing: 2px; 
-    text-transform: uppercase; 
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #fff; /* 鼠标移上去变成白色作为反馈 */
-}
-
-/* --- 首页 & 关于页文字颜色 --- */
-.intro-text, .body-text, .description p {
-    color: #aaa; /* 这里就是你截图里的那种灰色 */
-}
-
-/* --- 标题类文字 --- */
-h1, .logo, .award-title {
-    color: #fff; /* 名字和 Logo 建议保留白色，拉开层次感 */
-}
-
-h3, .proficiencies-label, .label {
-    color: #fff; /* 重点小标题用白色加粗 */
-    font-weight: 700;
-}
-
-/* --- 底部链接 (Instagram / Linkedin) --- */
-.social-links a, .socials a {
-    color: #fff; /* 链接保留白色，或者改为 #aaa */
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.separator, .sep {
-    color: #444; /* 斜杠可以用更深的灰色，弱化它 */
-}
-
-/* --- 奖项 Award 部分 --- */
-.award-item, .award-detail {
-    color: #888; /* 奖项详情使用稍浅的灰色 */
-}
-
-/* --- 布局保持不变 --- */
-.main-layout, .home-container {
+    height: 100vh; /* 强制全屏高度，防止乱滚动 */
     display: flex;
-    padding: 60px 80px;
-    gap: 80px;
+    flex-direction: column;
+}
+
+/* --- 导航栏 --- */
+.navbar {
+    flex: 0 0 auto; /* 导航栏高度固定 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 5%;
+    height: 140px;
+}
+
+.logo { font-size: 1.1rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #666; text-decoration: none; transition: 0.3s; }
+.nav-links a:hover { color: #fff; }
+
+/* --- 核心左右布局 --- */
+.home-split-layout {
+    flex: 1; /* 占据剩余高度 */
+    display: flex;
+    align-items: center; /* 垂直居中对齐 */
+    padding: 0 5%; /* 左右边距 */
+    gap: 60px; /* 左右两块的间距 */
+    max-width: 1800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* --- 左侧区域 --- */
+.left-content {
+    width: 38%; /* 左侧稍微窄一点，留给视频更多空间 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.intro { 
+    font-size: 0.95rem; 
+    margin-bottom: 40px; 
+    color: #aaa; 
+    text-align: justify; /* 文字两端对齐，更整齐 */
+}
+
+.skills-group { margin-bottom: 60px; }
+.label { color: #fff; font-weight: 700; display: block; margin-bottom: 8px; font-size: 0.9rem;}
+.skills-list { font-size: 0.85rem; color: #777; }
+
+/* 社交链接 */
+.social-bottom {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.social-bottom a { color: #fff; text-decoration: none; transition: color 0.3s; }
+.social-bottom a:hover { color: #aaa; }
+.slash { margin: 0 10px; color: #333; }
+
+
+/* --- 右侧区域 (大视频) --- */
+.right-content {
+    width: 62%; /* 右侧占据更大空间 */
+}
+
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* 锁定 16:9 比例 */
+    background: #000;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* 给视频加一点悬浮阴影 */
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- 手机适配 --- */
+@media (max-width: 1024px) {
+    body { height: auto; display: block; }
+    .home-split-layout {
+        flex-direction: column-reverse; /* 手机上视频在上面，文字在下面 */
+        padding: 40px 5%;
+        gap: 40px;
+    }
+    .left-content, .right-content { width: 100%; }
+    .navbar { padding: 40px 5%; }
 }
