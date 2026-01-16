@@ -6,8 +6,8 @@ body {
     color: #fff;
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    height: 100vh;
-    overflow: hidden; /* 保证单页不滚动的高级感 */
+    min-height: 100vh;
+    padding: 60px 80px; /* 全局大边距 */
 }
 
 /* --- 统一导航栏 --- */
@@ -15,86 +15,65 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 60px 80px;
-    height: 160px;
+    margin-bottom: 80px;
 }
 
 .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 4px; }
 .nav-links { display: flex; list-style: none; }
 .nav-links li { margin-left: 40px; }
-.nav-links a { color: #fff; text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
-
-/* --- 核心：对标 Demo 的分栏布局 --- */
-.main-layout {
-    display: flex;
-    padding: 0 80px 80px 80px;
-    height: calc(100vh - 160px);
-    gap: 100px; /* 侧边栏和内容的固定距离 */
+.nav-links a { 
+    color: #fff; 
+    text-decoration: none; 
+    font-size: 0.75rem; 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
 }
 
-/* 左侧：严格锁定 300px */
-.left-sidebar {
-    flex: 0 0 300px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 20px;
+/* --- 页面内容布局 --- */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 左右平分 */
+    gap: 100px;
+    align-items: start;
 }
 
-.section-label {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 30px;
+/* 左侧文字区 */
+.left-side {
+    max-width: 450px; /* 限制文字宽度，保持精致感 */
 }
 
-.body-text {
-    font-size: 0.85rem;
+.intro-text {
+    font-size: 0.95rem;
     font-weight: 300;
-    color: #ccc;
-    margin-bottom: 30px;
+    color: #eee;
+    margin-bottom: 40px;
 }
 
-.proficiencies-title { font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; }
-.proficiencies-list { font-size: 0.75rem; color: #666; }
+.proficiencies { margin-bottom: 50px; }
+.proficiencies h3 { font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px; }
+.proficiencies p { font-size: 0.8rem; color: #777; }
 
-/* 社交链接 (解决变色和下划线问题) */
-.social-links { font-size: 0.75rem; letter-spacing: 1.5px; }
-.social-links a { color: #fff; text-decoration: none; transition: 0.3s; }
+/* 奖项 Award 部分 */
+.awards-section { margin-top: 60px; border-top: 1px solid #222; padding-top: 40px; }
+.awards-section h3 { font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px; color: #555; }
+.award-item { font-size: 0.85rem; margin-bottom: 10px; color: #aaa; }
+
+/* 右侧视觉区 */
+.right-side { width: 100%; }
+
+.video-wrapper { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #111; }
+.video-wrapper iframe { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
+
+.photo-wrapper { width: 100%; max-width: 400px; aspect-ratio: 3 / 4; background: #111; overflow: hidden; }
+.photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 社交链接 (底部固定) */
+.social-links { margin-top: 100px; font-size: 0.75rem; letter-spacing: 1px; }
+.social-links a { color: #fff; text-decoration: none; margin-right: 20px; }
 .social-links a:hover { color: #888; }
-.separator { margin: 0 10px; color: #333; }
 
-/* --- 右侧：视频/图片展示区 --- */
-.right-content {
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
-}
-
-/* 视频固定比例 */
-.video-box {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-}
-
-.video-box iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-}
-
-/* 关于页照片固定比例 */
-.photo-box {
-    width: 100%;
-    max-width: 500px;
-    aspect-ratio: 3 / 4;
-    background: #111;
-    overflow: hidden;
-}
-
-.photo-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* 响应式 */
+@media (max-width: 1024px) {
+    .main-content { grid-template-columns: 1fr; gap: 50px; }
+    body { padding: 40px; }
 }
