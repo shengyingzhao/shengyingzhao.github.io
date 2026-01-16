@@ -1,120 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Motion — Sarah Zhao</title>
-  <meta name="description" content="Motion design works by Sarah Zhao." />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion | Sarah Zhao</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">
-        <span class="brand-mark">◆</span>
-        <span class="brand-text">Sarah Zhao</span>
-      </a>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">SARAH ZHAO</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="motion.html" class="active">Motion</a></li>
+                    <li><a href="animation.html">Animation</a></li>
+                    <li><a href="illustration.html">Illustration</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <button class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            </nav>
+        </div>
+    </header>
+    <div class="mobile-nav"></div>
 
-      <nav class="nav" aria-label="Primary">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link is-active" href="motion.html">Motion</a>
-        <a class="nav-link" href="animation.html">Animation</a>
-        <a class="nav-link" href="illustration.html">Illustration</a>
-        <a class="nav-link" href="about.html">About</a>
-      </nav>
-
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main id="main" class="page">
-    <section class="page-head">
-      <div class="container">
-        <h1>Motion</h1>
-        <p class="muted">Selected motion projects. Click a project to open its page (add later).</p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-
-        <div class="filters">
-          <button class="pill is-active" type="button" data-filter="all">All</button>
-          <button class="pill" type="button" data-filter="title">Title Sequence</button>
-          <button class="pill" type="button" data-filter="brand">Branding</button>
-          <button class="pill" type="button" data-filter="typography">Typography</button>
-          <button class="pill" type="button" data-filter="3d">3D</button>
+    <main class="container">
+        <div class="page-header">
+            <h1>Motion</h1>
         </div>
 
-        <div class="grid" id="workGrid">
-          <!-- PROJECT CARD (copy/paste to add more) -->
-          <a class="work-card" href="#" data-tags="title typography">
-            <div class="work-thumb placeholder"></div>
-            <div class="work-info">
-              <h3>Project Title 01</h3>
-              <p class="muted">Short description — role, tools, vibe.</p>
-              <div class="tags">
-                <span class="tag">Title</span>
-                <span class="tag">Typography</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="work-card" href="#" data-tags="brand 3d">
-            <div class="work-thumb placeholder"></div>
-            <div class="work-info">
-              <h3>Project Title 02</h3>
-              <p class="muted">Short description — role, tools, vibe.</p>
-              <div class="tags">
-                <span class="tag">Brand</span>
-                <span class="tag">3D</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="work-card" href="#" data-tags="typography">
-            <div class="work-thumb placeholder"></div>
-            <div class="work-info">
-              <h3>Project Title 03</h3>
-              <p class="muted">Short description — role, tools, vibe.</p>
-              <div class="tags">
-                <span class="tag">Typography</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="work-card" href="#" data-tags="title brand">
-            <div class="work-thumb placeholder"></div>
-            <div class="work-info">
-              <h3>Project Title 04</h3>
-              <p class="muted">Short description — role, tools, vibe.</p>
-              <div class="tags">
-                <span class="tag">Title</span>
-                <span class="tag">Brand</span>
-              </div>
-            </div>
-          </a>
+        <div class="grid-gallery">
+            <a href="motion/project-01.html" class="card">
+                <div class="media-placeholder">▶ Play Preview (Project 01)</div>
+            </a>
+            <a href="motion/project-02.html" class="card">
+                <div class="media-placeholder">▶ Play Preview (Project 02)</div>
+            </a>
+            <a href="motion/project-03.html" class="card">
+                <div class="media-placeholder">▶ Play Preview (Project 03)</div>
+            </a>
+            <a href="motion/project-04.html" class="card">
+                <div class="media-placeholder">▶ Play Preview (Project 04)</div>
+            </a>
+            <a href="motion/project-05.html" class="card">
+                <div class="media-placeholder">▶ Play Preview (Project 05)</div>
+            </a>
+            <a href="motion/project-06.html" class="card">
+                <div class="media-placeholder">▶ Play Preview (Project 06)</div>
+            </a>
         </div>
+    </main>
 
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p class="muted">© <span id="year"></span> Sarah Zhao.</p>
-      <div class="footer-links">
-        <a href="about.html">Contact</a>
-        <a href="index.html">Home</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
