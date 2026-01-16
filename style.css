@@ -16,7 +16,8 @@
     
     /* Dimensions */
     --max-w: 1200px;       /* Wide but contained */
-    --radius: 12px;
+    /* [修改点] 将圆角设为 0 */
+    --radius: 0px;
     
     /* Spacing */
     --nav-height: 80px;
@@ -49,7 +50,7 @@ img, iframe, video { display: block; width: 100%; border: none; }
     height: var(--nav-height);
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.03); /* 极细微的分割线，可保留增加层次 */
 }
 
 .container {
@@ -99,10 +100,9 @@ img, iframe, video { display: block; width: 100%; border: none; }
 /* =========================================
    3. REFERENCE LAYOUT (Hero Split)
    ========================================= */
-/* This matches the layout in your image: Bio Left, Links Right */
 .hero-split {
     display: grid;
-    grid-template-columns: 1.5fr 1fr; /* Left is wider */
+    grid-template-columns: 1.5fr 1fr;
     gap: 60px;
     padding: 80px 0 60px;
     align-items: start;
@@ -129,16 +129,17 @@ img, iframe, video { display: block; width: 100%; border: none; }
 .arrow { opacity: 0.5; font-size: 0.8em; }
 
 /* =========================================
-   4. GRIDS & CARDS
+   4. GRIDS & CARDS ([重点修改])
    ========================================= */
+/* [修改点] 移除了 section-title 的上边框线 */
 .section-title {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--muted);
     margin-bottom: 24px;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding-top: 24px;
+    /* border-top: 1px solid rgba(255,255,255,0.05);  <-- 移除线条 */
+    padding-top: 0;
 }
 
 .grid-2col {
@@ -148,43 +149,48 @@ img, iframe, video { display: block; width: 100%; border: none; }
     margin-bottom: 80px;
 }
 
+/* [修改点] 优化了 illustration 的 3 列网格 */
 .grid-3col {
     display: grid;
+    /* 自动填充，最小宽度 300px，适应性更好 */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 24px;
     margin-bottom: 80px;
 }
 
+/* [修改点] 卡片样式简化 */
 .card {
     display: block;
     background: var(--surface);
-    border-radius: var(--radius);
+    border-radius: var(--radius); /* 现在是 0px，长方形 */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* 移除所有可能的边框 */
+    border: none; 
 }
 .card:hover {
     transform: translateY(-5px);
     background: var(--surface-hover);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    /* 悬停时增加柔和的阴影，而不是线条 */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
 }
 
 .media-box {
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/9; /* Motion/Animation 的默认比例 */
     background: #000;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--muted);
 }
-/* For images inside cards */
+/* Illustration 可以有不同的比例，通过 HTML 控制 */
+.media-box.portrait { aspect-ratio: 3/4; }
+.media-box.square { aspect-ratio: 1/1; }
+
 .media-box img { width: 100%; height: 100%; object-fit: cover; }
 
-.card-info {
-    padding: 16px 20px;
-}
-.card-title { font-size: 1rem; font-weight: 500; color: var(--fg); }
-.card-sub { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+/* [修改点] 移除了 card-info, card-title, card-sub 的样式，因为不再需要了 */
 
 /* =========================================
    5. UTILS & MOBILE
@@ -192,18 +198,19 @@ img, iframe, video { display: block; width: 100%; border: none; }
 .vimeo-full {
     width: 100%;
     aspect-ratio: 16/9;
-    border-radius: var(--radius);
+    border-radius: var(--radius); /* 长方形 */
     background: #000;
     box-shadow: 0 20px 50px rgba(0,0,0,0.4);
     margin-bottom: 80px;
     overflow: hidden;
+    border: none; /* 无线条 */
 }
 
 .btn-back {
     display: inline-block;
     padding: 12px 24px;
     background: var(--surface);
-    border-radius: 100px;
+    border-radius: var(--radius); /* 长方形按钮 */
     margin-top: 40px;
     font-size: 0.9rem;
 }
@@ -227,4 +234,6 @@ img, iframe, video { display: block; width: 100%; border: none; }
     .hamburger { display: flex; }
     .hero-split { grid-template-columns: 1fr; gap: 40px; padding: 40px 0; }
     .grid-2col { grid-template-columns: 1fr; }
+    /* Illustration 在手机上显示 1 列 */
+    .grid-3col { grid-template-columns: 1fr; }
 }
