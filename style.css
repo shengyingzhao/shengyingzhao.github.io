@@ -1,28 +1,26 @@
-/* --- 全局基础重置 --- */
+/* --- 基础设置 --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: #000000;
-    color: #ffffff;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    overflow: hidden; /* 防止首页出现多余滚动条 */
-    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- 导航栏：极简、大方 --- */
+/* --- 导航栏：加大边距 --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 5%; /* 增加上下边距，更透气 */
-    height: 100px;
+    padding: 60px 80px; /* 大边距 */
 }
 
 .logo {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+    letter-spacing: 4px;
 }
 
 .nav-links {
@@ -30,110 +28,101 @@ body {
     list-style: none;
 }
 
-.nav-links li { margin-left: 35px; }
-
+.nav-links li { margin-left: 40px; }
 .nav-links a {
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: color 0.4s ease;
-}
-
-.nav-links a:hover {
-    color: #777777; /* 悬停高级灰 */
-}
-
-/* --- 核心布局：左右分栏 --- */
-.main-container {
-    display: flex;
-    height: calc(100vh - 100px); /* 减去导航栏高度 */
-    padding: 0 5% 5% 5%;
-    gap: 60px;
-}
-
-/* 左侧：自我介绍区域 */
-.side-info {
-    flex: 0 0 320px; /* 固定宽度，防止挤压 */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* 文字靠上对齐 */
-    padding-top: 20px;
-}
-
-.intro-text {
-    font-size: 0.9rem;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    color: #eeeeee;
-    font-weight: 300;
-}
-
-.skills-list {
-    font-size: 0.75rem;
-    line-height: 1.6;
-    color: #888888; /* 技能列表变淡，突出主文字 */
-}
-
-.skills-list strong {
-    color: #ffffff;
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-}
-
-/* 社交链接：修正蓝色和下划线 */
-.social-footer {
-    margin-top: auto; /* 链接被推到侧边栏的最下面 */
-    margin-bottom: 40px;
     font-size: 0.7rem;
-    letter-spacing: 1.5px;
-}
-
-.social-footer a {
-    color: #ffffff; /* 拒绝蓝色 */
-    text-decoration: none; /* 去掉下划线 */
+    letter-spacing: 2px;
+    text-transform: uppercase;
     transition: 0.3s;
 }
+.nav-links a:hover { color: #888; }
 
-.social-footer a:hover {
-    color: #777777;
+/* --- 主容器布局 --- */
+.page-wrapper {
+    padding: 0 80px 80px 80px; /* 侧边和底部的巨大留白 */
 }
 
-.slash {
-    margin: 0 12px;
-    color: #333333;
-}
-
-/* --- 右侧：视频大屏化展示 --- */
-.video-presentation {
-    flex: 1; /* 占据剩余所有空间 */
+.main-content {
     display: flex;
-    align-items: center; /* 视频上下居中 */
+    gap: 100px; /* 侧边栏和视频之间的距离 */
+    align-items: flex-start;
 }
 
-.vimeo-wrapper {
-    width: 100%;
-    height: 90%; /* 视频占据高度的 90% */
-    background: #000;
+/* --- 左侧侧边栏：编排美化 --- */
+.side-bar {
+    flex: 0 0 300px; /* 固定宽度，防止文字拉太长 */
+}
+
+.intro {
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: #ccc;
+    text-align: justify;
+}
+
+.label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.skills p {
+    font-size: 0.8rem;
+    color: #666; /* 调暗次要信息 */
+}
+
+/* 社交链接：修正颜色和排版 */
+.social-links {
+    margin-top: 60px;
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+    border-bottom: 1px solid transparent;
+}
+
+.social-links a:hover {
+    color: #888;
+    border-bottom: 1px solid #444;
+}
+
+.dot { margin: 0 10px; color: #333; }
+
+/* --- 右侧视频：赏心悦目的大屏 --- */
+.video-display {
+    flex: 1; /* 占据剩下所有空间 */
+}
+
+.video-aspect-ratio {
     position: relative;
-}
-
-.vimeo-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* 保证视频填满容器 */
+    padding-bottom: 56.25%; /* 保持16:9比例 */
+    background: #0a0a0a;
+    border-radius: 4px; /* 微小的圆角让视觉更柔和 */
+    overflow: hidden;
 }
 
-/* 适配移动端 */
-@media (max-width: 1024px) {
-    body { overflow-y: auto; height: auto; }
-    .main-container { flex-direction: column-reverse; height: auto; padding-top: 40px; }
-    .side-info { flex: none; width: 100%; }
-    .vimeo-wrapper { height: 56.25vw; } /* 移动端保持 16:9 */
+.video-aspect-ratio iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+/* --- 移动端适配 --- */
+@media (max-width: 1100px) {
+    .navbar { padding: 40px; }
+    .page-wrapper { padding: 0 40px 40px 40px; }
+    .main-content { flex-direction: column-reverse; gap: 50px; }
+    .side-bar { width: 100%; flex: none; }
 }
