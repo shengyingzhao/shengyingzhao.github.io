@@ -1,4 +1,4 @@
-/* --- 基础设置 --- */
+/* --- 全局样式 --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -7,18 +7,19 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
-/* --- 导航栏：加大边距 --- */
+/* --- 顶部导航栏 --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 60px 80px; /* 大边距 */
+    padding: 60px 80px; /* 增加呼吸感 */
 }
 
 .logo {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 4px;
 }
@@ -29,100 +30,102 @@ body {
 }
 
 .nav-links li { margin-left: 40px; }
+
 .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: 0.3s;
 }
-.nav-links a:hover { color: #888; }
+
+.nav-links a:hover { color: #777; }
 
 /* --- 主容器布局 --- */
 .page-wrapper {
-    padding: 0 80px 80px 80px; /* 侧边和底部的巨大留白 */
+    padding: 0 80px 80px 80px;
 }
 
 .main-content {
     display: flex;
-    gap: 100px; /* 侧边栏和视频之间的距离 */
+    gap: 100px; /* 文字与视频的间距 */
     align-items: flex-start;
 }
 
-/* --- 左侧侧边栏：编排美化 --- */
+/* --- 左侧侧边栏 --- */
 .side-bar {
-    flex: 0 0 300px; /* 固定宽度，防止文字拉太长 */
+    flex: 0 0 300px; /* 固定简介宽度 */
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
 }
 
 .intro {
     font-size: 0.9rem;
     font-weight: 300;
     margin-bottom: 40px;
-    color: #ccc;
+    color: #eee;
     text-align: justify;
 }
 
 .label {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 10px;
     letter-spacing: 1px;
-    color: #fff;
 }
 
 .skills p {
-    font-size: 0.8rem;
-    color: #666; /* 调暗次要信息 */
+    font-size: 0.75rem;
+    color: #666;
+    line-height: 1.8;
 }
 
-/* 社交链接：修正颜色和排版 */
+/* 社交链接 (修正颜色与下划线) */
 .social-links {
-    margin-top: 60px;
+    margin-top: auto; /* 推到底部 */
+    padding-top: 50px;
     font-size: 0.75rem;
-    font-weight: 400;
+    letter-spacing: 1.5px;
 }
 
 .social-links a {
     color: #fff;
     text-decoration: none;
     transition: 0.3s;
-    border-bottom: 1px solid transparent;
 }
 
-.social-links a:hover {
-    color: #888;
-    border-bottom: 1px solid #444;
-}
+.social-links a:hover { color: #777; }
 
-.dot { margin: 0 10px; color: #333; }
+.slash { margin: 0 12px; color: #333; }
 
-/* --- 右侧视频：赏心悦目的大屏 --- */
+/* --- 右侧视频展示 --- */
 .video-display {
-    flex: 1; /* 占据剩下所有空间 */
+    flex: 1;
 }
 
 .video-aspect-ratio {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 保持16:9比例 */
-    background: #0a0a0a;
-    border-radius: 4px; /* 微小的圆角让视觉更柔和 */
-    overflow: hidden;
+    padding-bottom: 56.25%; /* 16:9 比例 */
+    background: #000;
+    overflow: visible;
 }
 
 .video-aspect-ratio iframe {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
+    pointer-events: auto; /* 关键：允许点击播放条 */
 }
 
-/* --- 移动端适配 --- */
+/* --- 响应式 --- */
 @media (max-width: 1100px) {
     .navbar { padding: 40px; }
     .page-wrapper { padding: 0 40px 40px 40px; }
     .main-content { flex-direction: column-reverse; gap: 50px; }
-    .side-bar { width: 100%; flex: none; }
+    .side-bar { width: 100%; flex: none; min-height: auto; }
 }
