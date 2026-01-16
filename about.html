@@ -3,52 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarah Zhao | About</title>
-    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <title>About | Sarah Zhao</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav class="navbar">
         <div class="logo">SARAH ZHAO</div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <ul class="nav-links">
             <li><a href="index.html">HOME</a></li>
-            <li><a href="motion.html">MOTION</a></li>
-            <li><a href="animation.html">ANIMATION</a></li>
-            <li><a href="illustration.html">ILLUSTRATION</a></li>
             <li><a href="about.html" class="active">ABOUT</a></li>
+            <li><a href="illustration.html">ILLUSTRATION</a></li>
         </ul>
     </nav>
 
-    <main class="home-container">
-        
+    <div class="page-container">
         <div class="left-content">
             <div class="bio-text">
+                <h1>ABOUT ME.</h1>
                 <p class="intro">
-                    I’m a motion media designer and illustrator based in Shanghai and Atlanta, currently pursuing my MFA at SCAD. My work blends cinematic motion, character-driven storytelling, and strong graphic sensibility.
-                </p>
-                <p class="intro">
-                    I enjoy producing projects from the ground up—developing concepts, building visual worlds, and bringing them to life through 2D and 3D animation.
+                    My name is Sarah. I specialize in character design and minimal storytelling.
+                    <br><br>
+                    I believe that white space is just as important as the ink itself.
                 </p>
                 <div class="skills">
-                    <p style="margin-top: 20px; font-size: 0.85rem; color: #777;">
-                        Proficient in After Effects, Cinema 4D, Blender, Toon Boom Storyboard Pro & Harmony, Illustrator, InDesign, and Procreate, I’m focused on growing a unified practice where design, narrative, and animation coexist seamlessly.
-                    </p>
+                    <span class="label">SKILLS</span>
+                    <p>Illustration, Motion Graphics, UI Design</p>
                 </div>
             </div>
-            
             <div class="socials-bottom">
-                <a href="https://www.instagram.com/crowalker_/" target="_blank">INSTAGRAM</a>
+                <a href="#">RESUME</a>
                 <span class="sep">/</span>
-                <a href="https://www.linkedin.com/in/sarah-zhao-02199132a/" target="_blank">LINKEDIN</a>
+                <a href="#">EMAIL ME</a>
             </div>
         </div>
 
         <div class="right-content">
-            <img src="profile.jpg" alt="Sarah Zhao" class="profile-img">
+            <img src="profile.jpg" alt="Profile Photo" class="profile-img">
         </div>
+    </div>
 
-    </main>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            const burger = document.querySelector('.hamburger');
+            nav.classList.toggle('active');
+            burger.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
 
 </body>
 </html>
