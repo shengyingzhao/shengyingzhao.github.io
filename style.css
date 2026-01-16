@@ -1,5 +1,5 @@
 /* =========================================
-   1. 全局设置 (Global)
+   1. 全局设置
    ========================================= */
 * {
     margin: 0;
@@ -8,24 +8,17 @@
 }
 
 body {
-    background-color: #000; /* 纯黑背景 */
-    color: #999;            /* 高级灰字体 */
+    background-color: #000;
+    color: #999;
     font-family: 'Inter', Helvetica, Arial, sans-serif;
-    /* 这里设置 min-height: 100vh 保证页面至少占满一屏
-       overflow-x: hidden 防止图片旋转导致横向出现滚动条
-    */
-    min-height: 100vh;
-    overflow-x: hidden; 
-    display: flex;
-    flex-direction: column;
+    overflow-x: hidden; /* 禁止横向滚动条 */
 }
 
 /* =========================================
-   2. 导航栏 (Navbar)
+   2. 导航栏 (固定头部)
    ========================================= */
 .navbar {
-    flex: 0 0 auto; /* 导航栏高度固定 */
-    height: 120px;
+    height: 100px; /* 稍微调小一点，更精致 */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -59,23 +52,162 @@ body {
 }
 
 /* =========================================
-   3. Home & About 通用布局 (Split Layout)
+   3. HOME & ABOUT 核心布局 (修复版)
    ========================================= */
+/* 这里的 height: calc(100vh - 100px) 保证刚好占满一屏，不许乱动 */
 .home-container {
-    flex: 1; /* 填满剩余空间 */
-    display: flex;
-    padding: 0 60px 40px; /* 上 左右 下 */
-    gap: 60px;
-    align-items: center; /* 垂直居中 */
-    width: 100%;
-    max-width: 1920px;
+    height: calc(100vh - 100px); 
+    display: flex;               /* 强制横向排列 */
+    padding: 0 60px;
+    gap: 40px;
+    align-items: center;         /* 垂直居中 */
+    justify-content: center;
+    max-width: 1600px;
     margin: 0 auto;
-    /* 保证内容区有足够高度来放置底部链接 */
-    min-height: 600px; 
+}
+
+/* 左侧：文字区 */
+.left-content {
+    flex: 1;             /* 占 1 份宽度 */
+    max-width: 500px;    /* 限制文字最大宽度，防止太宽难看 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
     position: relative;
 }
 
-/* --- 左侧区域 (文字+链接) --- */
-.left-content {
-    width: 35%;
-    height: 100
+.bio-text {
+    margin-bottom: 60px; /* 避开底部链接 */
+}
+
+.intro {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #bbb;
+}
+
+.skills .label {
+    display: block;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+}
+.skills p {
+    font-size: 0.8rem;
+    color: #777;
+    line-height: 1.5;
+}
+
+/* 底部链接 (绝对定位在左侧底部) */
+.socials-bottom {
+    position: absolute;
+    bottom: 40px; 
+    left: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.socials-bottom a { color: #fff; text-decoration: none; }
+.socials-bottom a:hover { color: #888; }
+.sep { margin: 0 10px; color: #333; }
+
+/* 右侧：视频/图片区 */
+.right-content {
+    flex: 1.5;           /* 占 1.5 份宽度，比文字区宽 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 视频容器 */
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.video-wrapper iframe { width: 100%; height: 100%; }
+
+/* About 照片 (修复尺寸) */
+.profile-img {
+    width: 300px;       /* 保持小方块 */
+    height: auto;
+    box-shadow: 15px 15px 0px #1a1a1a;
+}
+
+/* =========================================
+   4. ILLUSTRATION 散落画廊 (缩小版)
+   ========================================= */
+.scatter-container {
+    padding: 40px;
+    min-height: calc(100vh - 100px); /* 至少撑满剩余高度 */
+    display: flex;
+    flex-wrap: wrap;       
+    justify-content: center; 
+    align-items: center;
+    align-content: center;   /* 内容垂直居中 */
+    gap: 30px;               /* 减小间距 */
+}
+
+/* 图片卡片 (这里改小了！) */
+.polaroid {
+    display: block;
+    width: 200px;      /* <--- 从 320 改到了 200，精致多了 */
+    height: auto;
+    transition: all 0.5s ease;
+    cursor: zoom-in;
+    position: relative;
+    z-index: 1; 
+}
+
+.polaroid img {
+    width: 100%;
+    display: block;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    border: 6px solid #fff; /* 白边变细一点 */
+}
+
+/* 随机散落效果 */
+.polaroid:nth-child(even) { transform: rotate(5deg); }
+.polaroid:nth-child(odd)  { transform: rotate(-4deg); }
+.polaroid:nth-child(3n)   { transform: rotate(-6deg) translateY(-10px); }
+.polaroid:nth-child(4n)   { transform: rotate(3deg) translateY(10px); }
+
+/* 悬停交互 */
+.polaroid:hover {
+    z-index: 999;
+    transform: scale(1.3) rotate(0deg) !important; /* 放大倍数调高一点，因为原图变小了 */
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    border-color: #fff;
+}
+
+/* 灯箱微调 */
+.lum-lightbox { background: rgba(0, 0, 0, 0.95) !important; }
+
+/* =========================================
+   5. 手机适配 (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    .navbar { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 20px;}
+    
+    .home-container {
+        flex-direction: column-reverse; /* 文字在下，视频在上 */
+        height: auto;
+        padding: 30px 20px;
+        display: block;
+    }
+    
+    .left-content { width: 100%; max-width: 100%; margin-top: 30px; }
+    .right-content { width: 100%; }
+    
+    .socials-bottom { position: static; margin-top: 30px; padding-bottom: 20px; }
+    
+    /* 手机上 illustration 变整齐 */
+    .scatter-container { gap: 15px; padding: 20px; align-items: flex-start; }
+    .polaroid { width: 45%; margin: 5px; }
+    .polaroid:nth-child(n) { transform: none; }
+}
