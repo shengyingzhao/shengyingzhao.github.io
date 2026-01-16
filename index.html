@@ -4,32 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sarah Zhao | Motion & Visual Development</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="site-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">SARAH ZHAO</a>
-            
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="motion.html">Motion</a></li>
-                    <li><a href="animation.html">Animation</a></li>
-                    <li><a href="illustration.html">Illustration</a></li>
-                    <li><a href="about.html">About</a></li>
-                </ul>
-                <button class="hamburger" aria-label="Menu" aria-expanded="false">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
+            <a href="index.html" class="logo">Sarah Zhao</a>
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="motion.html" class="nav-link">Motion</a>
+                <a href="animation.html" class="nav-link">Animation</a>
+                <a href="illustration.html" class="nav-link">Illustration</a>
+                <a href="about.html" class="nav-link">About</a>
             </nav>
+            <button class="hamburger" onclick="toggleMenu()">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </button>
         </div>
     </header>
 
-    <div class="mobile-nav">
+    <div class="mobile-menu" id="mobileMenu">
         <a href="index.html">Home</a>
         <a href="motion.html">Motion</a>
         <a href="animation.html">Animation</a>
@@ -38,28 +33,32 @@
     </div>
 
     <main class="container">
-        <section class="hero">
-            <div class="hero-id">Motion media designer + Visual Development</div>
-            <div class="hero-meta">Shanghai ↔ Atlanta • MFA at SCAD</div>
-            
-            <p class="hero-bio">
-                I’m a motion media designer and illustrator based between Shanghai and Atlanta, currently pursuing my MFA at SCAD. I create cinematic motion, character-driven storytelling, and graphic systems that feel intentional and precise—bringing ideas to life through 2D and 3D animation.
-            </p>
+        <section class="hero-split">
+            <div class="hero-bio">
+                <h1>
+                    <strong>Sarah Zhao</strong> is a motion media designer and illustrator based between Shanghai and Atlanta, currently pursuing an MFA at SCAD.
+                    <br><br>
+                    Focusing on cinematic motion, character-driven storytelling, and graphic systems that feel intentional and precise.
+                </h1>
+            </div>
 
-            <div class="links-row">
-                <a href="mailto:contact@sarahzhao.com">Email</a>
-                <a href="#">Instagram</a>
-                <a href="#">LinkedIn</a>
+            <div class="hero-links">
+                <a href="mailto:crowalker100@gmail.com"><span class="arrow">↗</span> crowalker100@gmail.com</a>
+                <a href="#"><span class="arrow">↗</span> Instagram</a>
+                <a href="#"><span class="arrow">↗</span> LinkedIn</a>
+                <a href="#"><span class="arrow">↗</span> Resume</a>
             </div>
         </section>
 
-        <section class="reel-section">
-            <div class="video-wrapper">
-                <iframe src="https://player.vimeo.com/video/1154922127?h=0&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </section>
+        <div class="section-title">Selected Works / Showreel</div>
+        <div class="vimeo-full">
+            <iframe src="https://player.vimeo.com/video/1154922127?h=0&title=0&byline=0&portrait=0" width="100%" height="100%" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+
     </main>
 
     <script src="assets/js/main.js"></script>
+</body>
+</html>
 </body>
 </html>
