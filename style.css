@@ -1,5 +1,5 @@
 /* =========================================
-   1. 全局设置
+   1. 全局设置 (Global)
    ========================================= */
 * {
     margin: 0;
@@ -15,7 +15,7 @@ body {
 }
 
 /* =========================================
-   2. 导航栏
+   2. 导航栏 (Navbar)
    ========================================= */
 .navbar {
     height: 100px;
@@ -52,27 +52,23 @@ body {
 }
 
 /* =========================================
-   3. HOME 页核心排版 (稳定版)
+   3. HOME 页核心排版 (保持不变)
    ========================================= */
 .home-container {
-    /* 核心修复：强制使用 Flexbox 左右布局 */
     display: flex;
     flex-direction: row; 
-    align-items: center; /* 垂直居中 */
-    justify-content: center; /* 水平居中 */
-    
-    /* 限制高度，保证刚好一屏，不留大片空白 */
+    align-items: center;
+    justify-content: center;
     min-height: calc(100vh - 100px);
     width: 100%;
-    max-width: 1400px; /* 限制最大宽度，防止太散 */
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 60px;
-    gap: 80px; /* 左右间距 */
+    gap: 80px;
 }
 
-/* 左侧文字区 */
 .left-content {
-    flex: 1; /* 占比 1 */
+    flex: 1;
     max-width: 450px;
     display: flex;
     flex-direction: column;
@@ -80,17 +76,13 @@ body {
     position: relative;
 }
 
-.bio-text {
-    margin-bottom: 50px;
-}
-
+.bio-text { margin-bottom: 50px; }
 .intro {
     font-size: 0.95rem;
     line-height: 1.7;
     margin-bottom: 30px;
     color: #bbb;
 }
-
 .skills .label {
     display: block;
     color: #fff;
@@ -98,13 +90,8 @@ body {
     margin-bottom: 8px;
     font-size: 0.85rem;
 }
-.skills p {
-    font-size: 0.8rem;
-    color: #777;
-    line-height: 1.5;
-}
+.skills p { font-size: 0.8rem; color: #777; line-height: 1.5; }
 
-/* 底部链接 */
 .socials-bottom {
     margin-top: 20px;
     font-size: 0.75rem;
@@ -115,114 +102,29 @@ body {
 .socials-bottom a:hover { color: #888; }
 .sep { margin: 0 10px; color: #333; }
 
-/* 右侧视频区 */
 .right-content {
-    flex: 1.5; /* 占比 1.5，比左边宽 */
+    flex: 1.5;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* 视频框 */
 .video-wrapper {
     width: 100%;
-    max-width: 800px; /* 限制视频最大尺寸 */
+    max-width: 800px;
     aspect-ratio: 16 / 9;
     background: #000;
     box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 .video-wrapper iframe { width: 100%; height: 100%; }
 
-/* =========================================
-   4. ILLUSTRATION 画廊 (缩小修复版)
-   ========================================= */
-.scatter-container {
-    padding: 20px;
-    min-height: calc(100vh - 120px);
-    display: flex;
-    flex-wrap: wrap;       
-    justify-content: center; 
-    align-items: center;
-    align-content: center;
-    gap: 40px; /* 稍微拉开一点距离 */
-}
-
-/* 图片卡片 */
-.polaroid {
-    display: block;
-    /* --- 这里改小了！ --- */
-    width: 160px;  /* 之前是200px/320px，现在160px很精致 */
+/* About 页照片样式 */
+.profile-img {
+    width: 300px;
     height: auto;
-    transition: all 0.4s ease;
-    cursor: zoom-in;
-    position: relative;
-    z-index: 1; 
-}
-
-.polaroid img {
-    width: 100%;
-    display: block;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
-    border: 5px solid #fff; /* 白边变细 */
-}
-
-/* 随机角度 */
-.polaroid:nth-child(even) { transform: rotate(6deg); }
-.polaroid:nth-child(odd)  { transform: rotate(-5deg); }
-.polaroid:nth-child(3n)   { transform: rotate(-8deg) translateY(-10px); }
-.polaroid:nth-child(4n)   { transform: rotate(4deg) translateY(10px); }
-
-/* 悬停效果 */
-.polaroid:hover {
-    z-index: 999;
-    transform: scale(1.4) rotate(0deg) !important; /* 悬停放大倍数大一点，方便看清 */
-    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
-    border-color: #fff;
+    box-shadow: 15px 15px 0px #1a1a1a;
 }
 
 /* =========================================
-   5. 灯箱修复 (叉叉变白)
-   ========================================= */
-.lum-lightbox {
-    background: rgba(0, 0, 0, 0.95) !important; /* 背景极黑 */
-    z-index: 9999 !important;
-}
-
-.lum-lightbox-inner img {
-    max-width: 90vw; /* 保证大图不超宽 */
-    max-height: 90vh;
-    box-shadow: 0 0 50px rgba(0,0,0,1);
-}
-
-/* 关键修复：强制把关闭按钮变白 
-   因为它是 SVG，我们用 filter 反转颜色 
-*/
-.lum-close-button {
-    filter: invert(1) !important; /* 黑变白 */
-    opacity: 0.8;
-    transform: scale(1.5); /* 放大一点，更容易点到 */
-    right: 20px !important;
-    top: 20px !important;
-}
-
-/* =========================================
-   6. 手机适配
-   ========================================= */
-@media (max-width: 900px) {
-    .navbar { flex-direction: column; height: auto; padding: 30px; gap: 20px; }
-    
-    .home-container {
-        flex-direction: column-reverse; /* 手机上：字在下，图在上 */
-        height: auto;
-        padding: 40px 30px;
-        gap: 40px;
-    }
-    
-    .left-content, .right-content { width: 100%; max-width: 100%; margin: 0; }
-    
-    /* 手机上插画整齐排列 */
-    .polaroid { width: 140px; margin: 10px; }
-    .scatter-container { gap: 15px; }
-    .polaroid:nth-child(n) { transform: none; }
-}
+   4. ILLUSTRATION 画廊 (全新
