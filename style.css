@@ -1,5 +1,5 @@
 /* =========================================
-   1. 全局核心设置 (Global Core)
+   1. GLOBAL CORE (White Mode)
    ========================================= */
 * {
     margin: 0;
@@ -8,8 +8,8 @@
 }
 
 body {
-    background-color: #ffffff; /* 改为白底 */
-    color: #1a1a1a;            /* 改为深黑色文字 */
+    background-color: #ffffff; /* White Background */
+    color: #1a1a1a;            /* Black/Dark Gray Text */
     font-family: 'Inter', Helvetica, Arial, sans-serif;
     overflow-x: hidden;
     min-height: 100vh;
@@ -18,7 +18,7 @@ body {
 }
 
 /* =========================================
-   2. 导航栏 (Navbar) - 包含新的汉堡菜单样式
+   2. NAVBAR & HAMBURGER MENU
    ========================================= */
 .navbar {
     flex: 0 0 100px; 
@@ -26,9 +26,9 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 60px;
-    z-index: 1000; /* 提高层级 */
+    z-index: 1000;
     position: relative;
-    background-color: #ffffff; /* 确保导航栏背景是白的 */
+    background-color: #ffffff;
 }
 
 .logo {
@@ -36,10 +36,10 @@ body {
     font-weight: 700;
     letter-spacing: 3px;
     color: #000000;
-    z-index: 1001; /* 保证 Logo 始终在菜单之上 */
+    z-index: 1002; /* Always above the menu overlay */
 }
 
-/* 桌面端菜单链接 */
+/* Desktop Menu */
 .nav-links {
     display: flex;
     list-style: none;
@@ -57,14 +57,14 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: #000000;
+    color: #000000; /* Active link is black */
 }
 
-/* --- 汉堡按钮 (默认隐藏，手机显示) --- */
+/* Hamburger Icon (Hidden on Desktop) */
 .hamburger {
-    display: none; /* 桌面端隐藏 */
+    display: none;
     cursor: pointer;
-    z-index: 1001; /* 保证按钮在覆盖层之上 */
+    z-index: 1002; /* Always above the menu overlay */
     width: 30px;
     height: 20px;
     position: relative;
@@ -79,25 +79,19 @@ body {
     transition: all 0.3s ease;
 }
 
-/* 当菜单激活时，汉堡按钮变成 X */
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 6px);
-}
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -6px);
-}
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
 /* =========================================
-   3. HOME & ABOUT 排版
+   3. PAGE LAYOUTS (Home & About)
    ========================================= */
-.home-container {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
+.page-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     flex: 1;
     min-height: calc(100vh - 100px);
     width: 100%;
@@ -107,6 +101,7 @@ body {
     gap: 80px;
 }
 
+/* Left Text Area */
 .left-content {
     flex: 1;
     max-width: 450px;
@@ -114,6 +109,8 @@ body {
     flex-direction: column;
     justify-content: center;
 }
+
+.bio-text h1 { font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: #000; }
 
 .intro {
     font-size: 0.95rem;
@@ -131,4 +128,135 @@ body {
 }
 .skills p { font-size: 0.8rem; color: #666666; line-height: 1.5; }
 
-.socials-bottom a { color: #00000
+/* Social Links */
+.socials-bottom { margin-top: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; }
+.socials-bottom a { color: #000000; text-decoration: none; }
+.socials-bottom a:hover { color: #666; }
+.sep { margin: 0 10px; color: #ccc; }
+
+/* Right Content Area */
+.right-content {
+    flex: 1.5; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Video Wrapper */
+.video-wrapper {
+    width: 100%;
+    max-width: 800px; 
+    aspect-ratio: 16 / 9;
+    background: #f4f4f4; 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1); 
+}
+.video-wrapper iframe { width: 100%; height: 100%; }
+
+/* Profile Image (NO SHADOW) */
+.profile-img {
+    width: 300px;
+    height: auto;
+    box-shadow: none !important; /* Forces no shadow */
+    border-radius: 4px; /* Optional: tiny corner rounding */
+}
+
+/* =========================================
+   4. ILLUSTRATION GALLERY
+   ========================================= */
+.scatter-container {
+    padding: 40px;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;        
+    justify-content: center; 
+    align-items: center;
+    align-content: center;
+    gap: 50px;
+}
+
+.polaroid {
+    display: block;
+    width: 180px; 
+    height: auto;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: zoom-in;
+    position: relative;
+    z-index: 1; 
+}
+
+.polaroid img {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+    /* Subtle shadow for white background */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+}
+
+/* Scatter Logic */
+.polaroid:nth-child(1n) { transform: rotate(4deg) translateY(-15px); }
+.polaroid:nth-child(2n) { transform: rotate(-6deg) translateY(10px); }
+.polaroid:nth-child(3n) { transform: rotate(2deg) translateY(25px) scale(1.02); z-index: 2; }
+.polaroid:nth-child(4n) { transform: rotate(-8deg) translateY(-20px); }
+.polaroid:nth-child(5n) { transform: rotate(5deg) scale(0.98); }
+
+.polaroid:hover {
+    z-index: 999;
+    transform: scale(1.3) rotate(0deg) !important;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+}
+
+/* =========================================
+   5. MOBILE RESPONSIVE (Hamburger)
+   ========================================= */
+@media (max-width: 900px) {
+    .navbar { padding: 0 30px; height: 80px; }
+    
+    /* Show Hamburger */
+    .hamburger { display: block; }
+
+    /* Mobile Menu Overlay */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #ffffff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transform: translateX(100%); /* Hidden by default */
+        opacity: 0;
+        transition: all 0.4s ease-in-out;
+        z-index: 1001;
+    }
+
+    /* Active State (Menu Open) */
+    .nav-links.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .nav-links a {
+        font-size: 2rem;
+        color: #999;
+        font-weight: 300;
+    }
+    .nav-links a.active { color: #000; }
+
+    /* Layout Adjustments */
+    .page-container {
+        flex-direction: column-reverse; /* Text bottom, Image top */
+        padding: 30px;
+        gap: 40px;
+        height: auto;
+    }
+    
+    .left-content, .right-content { width: 100%; max-width: 100%; }
+    
+    .polaroid { width: 140px; margin: 10px; }
+    .scatter-container { gap: 15px; padding: 20px; }
+    .polaroid:nth-child(n) { transform: none; } /* Tidy up gallery on mobile */
+}
