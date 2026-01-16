@@ -1,235 +1,135 @@
+/* 引入手绘字体 */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
-/* =========================================
-   1. 全局核心设置 (Global Core)
-   ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* 关键：防止边框撑大元素 */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --border-color: #000000;
+    /* 手绘风边框半径：产生不规则线条的关键 */
+    --sketchy-border: 255px 15px 225px 15px / 15px 225px 15px 255px;
 }
 
 body {
-    background-color: #000;
-    color: #999;
-    font-family: 'Inter', Helvetica, Arial, sans-serif;
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Patrick Hand', cursive, sans-serif; /* 应用手写字体 */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-size: 18px;
 }
 
-/* =========================================
-   2. 导航栏 (Navbar)
-   ========================================= */
-.navbar {
-    flex: 0 0 100px; /* 固定高度 100px */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 60px;
-    z-index: 100;
+/* 布局容器 */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.logo {
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: #fff;
+/* 导航栏 */
+header {
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--text-color);
+    /* 这种 border-radius 让线条看起来像手画的稍微有点弯 */
+    border-radius: 255px 15px / 15px 255px; 
+    margin-bottom: 40px;
 }
 
-.nav-links {
-    display: flex;
+nav ul {
     list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: all 0.2s;
+}
+
+nav a:hover, nav a.active {
+    /* 鼠标悬停时添加手绘框，而不是变色 */
+    border: 2px solid var(--text-color);
+    border-radius: var(--sketchy-border);
+}
+
+/* 通用标题 */
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+/* 按钮样式 (手绘风) */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 2px solid var(--text-color);
+    border-radius: var(--sketchy-border);
+    color: var(--text-color);
+    text-decoration: none;
+    margin-top: 20px;
+    transition: transform 0.1s;
+}
+
+.btn:hover {
+    transform: scale(1.02) rotate(-1deg); /* 悬停时微微晃动 */
+}
+
+/* --- 这里是解决您问题的关键部分 --- */
+/* About 页面的图片样式 */
+.profile-image {
+    width: 300px;
+    height: auto;
+    border: 3px solid var(--text-color);
+    
+    /* 关键：确保这里没有 box-shadow */
+    box-shadow: none !important; 
+    
+    /* 添加手绘边框效果 */
+    border-radius: var(--sketchy-border);
+    
+    display: block;
+    margin: 0 auto 30px auto;
+}
+
+/* Illustration 页面的网格 */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
 }
 
-.nav-links a {
-    color: #666;
-    text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    transition: color 0.3s;
+.gallery-item {
+    border: 2px solid var(--text-color);
+    border-radius: var(--sketchy-border);
+    padding: 10px;
+    transition: transform 0.2s;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-    color: #fff;
+.gallery-item:hover {
+    transform: rotate(1deg);
 }
 
-/* =========================================
-   3. HOME & ABOUT 核心排版 (强制修复版)
-   ========================================= */
-.home-container {
-    /* 核心：强制 Flex 左右布局，垂直水平居中 */
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-    
-    /* 保证占满剩余屏幕高度 */
-    flex: 1;
-    min-height: calc(100vh - 100px);
-    
+.gallery-item img {
     width: 100%;
-    max-width: 1400px; /* 限制最大宽度 */
-    margin: 0 auto;
-    padding: 40px 60px;
-    gap: 80px; /* 左右间距 */
-}
-
-/* --- 左侧文字区 --- */
-.left-content {
-    flex: 1;
-    max-width: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-}
-
-.bio-text { margin-bottom: 50px; }
-
-.intro {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 30px;
-    color: #bbb;
-}
-
-.skills .label {
-    display: block;
-    color: #fff;
-    font-weight: 700;
-    margin-bottom: 8px;
-    font-size: 0.85rem;
-}
-.skills p { font-size: 0.8rem; color: #777; line-height: 1.5; }
-
-/* 底部链接 */
-.socials-bottom {
-    margin-top: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-.socials-bottom a { color: #fff; text-decoration: none; }
-.socials-bottom a:hover { color: #888; }
-.sep { margin: 0 10px; color: #333; }
-
-/* --- 右侧内容区 (视频或照片) --- */
-.right-content {
-    flex: 1.5; /* 右侧比左侧宽 */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Home 页视频框 (强制大小) */
-.video-wrapper {
-    width: 100%;
-    max-width: 800px; /* 限制最大宽度，防止变得巨大 */
-    aspect-ratio: 16 / 9;
-    background: #000;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-}
-.video-wrapper iframe { width: 100%; height: 100%; }
-
-/* About 页照片 */
-.profile-img {
-    width: 300px;
     height: auto;
-    box-shadow: 20px 20px 0px #1a1a1a;
+    border-radius: 5px; /* 图片本身稍微圆角 */
+    filter: grayscale(100%); /* 让作品看起来也是黑白的，悬停变色可选 */
 }
 
-/* =========================================
-   4. ILLUSTRATION 画廊 (精致散落版)
-   ========================================= */
-.scatter-container {
-    padding: 40px;
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;       
-    justify-content: center; 
-    align-items: center;
-    align-content: center;
-    gap: 50px;
-}
-
-/* 图片卡片 (核心修复：强制小尺寸，无白边) */
-.polaroid {
-    display: block;
-    /* 强制宽度为 180px，绝对不会撑爆屏幕 */
-    width: 180px !important; 
-    height: auto;
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    cursor: zoom-in;
-    position: relative;
-    z-index: 1; 
-}
-
-.polaroid img {
-    width: 100%;
-    display: block;
-    border: none; /* 无白边 */
-    border-radius: 2px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5); /* 立体阴影 */
-}
-
-/* --- 随机散落魔法 --- */
-.polaroid:nth-child(1n) { transform: rotate(4deg) translateY(-15px); }
-.polaroid:nth-child(2n) { transform: rotate(-6deg) translateY(10px) translateX(10px); }
-.polaroid:nth-child(3n) { transform: rotate(2deg) translateY(25px) scale(1.02); z-index: 2; }
-.polaroid:nth-child(4n) { transform: rotate(-8deg) translateY(-20px) translateX(-5px); }
-.polaroid:nth-child(5n) { transform: rotate(5deg) scale(0.98); }
-
-/* 悬停交互 */
-.polaroid:hover {
-    z-index: 999;
-    transform: scale(1.3) rotate(0deg) translateY(0) translateX(0) !important;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.8);
-}
-
-/* =========================================
-   5. 灯箱修复 (大白叉叉)
-   ========================================= */
-.lum-lightbox {
-    background: rgba(0, 0, 0, 0.96) !important;
-    z-index: 9999 !important;
-}
-
-.lum-lightbox-inner img {
-    max-width: 90vw;
-    max-height: 90vh;
-    box-shadow: 0 0 60px rgba(0,0,0,1);
-}
-
-/* 关闭按钮强制变白变大 */
-.lum-close-button {
-    filter: invert(1) grayscale(1) brightness(2) !important; 
-    opacity: 1 !important;
-    transform: scale(2) !important; /* 放大2倍 */
-    top: 30px !important;
-    right: 30px !important;
-}
-
-/* =========================================
-   6. 手机适配 (Mobile)
-   ========================================= */
-@media (max-width: 900px) {
-    .navbar { flex-direction: column; height: auto; padding: 30px; gap: 20px; }
-    
-    .home-container {
-        flex-direction: column-reverse !important; /* 手机上图在上，文在下 */
-        height: auto;
-        padding: 40px 30px;
-        gap: 40px;
-    }
-    .left-content, .right-content { width: 100%; max-width: 100%; }
-    .video-wrapper { max-width: 100%; }
-    
-    /* 手机上插画整齐排列 */
-    .polaroid { width: 140px !important; margin: 10px; }
-    .scatter-container { gap: 15px; padding: 20px; }
-    .polaroid:nth-child(n) { transform: none; }
+/* 页脚 */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid var(--text-color);
+    border-radius: 15px 225px / 255px 15px;
+    font-size: 0.9rem;
 }
