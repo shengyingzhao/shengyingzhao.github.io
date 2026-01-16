@@ -1,65 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Sarah Zhao</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Sarah Zhao</title>
+  <meta name="description" content="About Sarah Zhao — motion media design student." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <nav class="navbar">
-        <div class="logo">SARAH ZHAO</div>
-        
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">◆</span>
+        <span class="brand-text">Sarah Zhao</span>
+      </a>
 
-        <ul class="nav-links">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="motion.html">MOTION</a></li>
-            <li><a href="animation.html">ANIMATION</a></li>
-            <li><a href="illustration.html">ILLUSTRATION</a></li>
-            <li><a href="about.html" class="active">ABOUT</a></li>
-        </ul>
-    </nav>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="motion.html">Motion</a>
+        <a class="nav-link" href="animation.html">Animation</a>
+        <a class="nav-link" href="illustration.html">Illustration</a>
+        <a class="nav-link is-active" href="about.html">About</a>
+      </nav>
 
-    <div class="page-container">
-        <div class="left-content">
-            <div class="bio-text">
-                <h1>ABOUT ME.</h1>
-                <p class="intro">
-                    My name is Sarah. I specialize in character design and minimal storytelling.
-                    <br><br>
-                    I believe that white space is just as important as the ink itself.
-                </p>
-                <div class="skills">
-                    <span class="label">SKILLS</span>
-                    <p>Illustration, Motion Graphics, UI Design</p>
-                </div>
-            </div>
-            <div class="socials-bottom">
-                <a href="#">RESUME</a>
-                <span class="sep">/</span>
-                <p>crowalker100@gmail.com</p>
-            </div>
-        </div>
-
-        <div class="right-content">
-            <img src="profile.png" alt="Profile Photo" class="profile-img">
-        </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </header>
 
-    <script>
-        function toggleMenu() {
-            const nav = document.querySelector('.nav-links');
-            const burger = document.querySelector('.hamburger');
-            nav.classList.toggle('active');
-            burger.classList.toggle('active');
-        }
-    </script>
+  <main id="main" class="page">
+    <section class="page-head">
+      <div class="container">
+        <h1>About</h1>
+        <p class="muted">Short bio, awards, and contact.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-grid">
+        <div class="about-card">
+          <div class="profile">
+            <div class="profile-img placeholder" aria-hidden="true"></div>
+            <!-- Later:
+            <img class="profile-img" src="assets/img/profile.jpg" alt="Sarah Zhao portrait" />
+            -->
+            <div class="profile-text">
+              <h2>Sarah Zhao</h2>
+              <p class="muted">MFA Motion Media Design • SCAD Atlanta</p>
+              <p>
+                I’m a motion media design student focused on building strong visual systems and expressive motion.
+                I enjoy mixing clean graphic design with cinematic rhythm.
+              </p>
+
+              <div class="contact-row">
+                <a class="btn btn-ghost" href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
+                <a class="btn" href="mailto:yourname@email.com">Email Me</a>
+              </div>
+
+              <div class="hero-meta">
+                <a class="meta-link" href="#" target="_blank" rel="noreferrer">Instagram</a>
+                <a class="meta-link" href="#" target="_blank" rel="noreferrer">Vimeo</a>
+                <a class="meta-link" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel-title">Awards & Highlights</h3>
+          <ul class="list">
+            <li><strong>Award / Selection</strong> — Year • Organization</li>
+            <li><strong>Award / Selection</strong> — Year • Organization</li>
+            <li><strong>Exhibition / Screening</strong> — Year • Location</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <h3 class="panel-title">Skills</h3>
+          <ul class="list">
+            <li>Motion Design • Title Sequences • Branding in Motion</li>
+            <li>Animation • Timing • Visual Development</li>
+            <li>After Effects • Cinema 4D • Blender • Illustrator</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p class="muted">© <span id="year"></span> Sarah Zhao.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="motion.html">Motion</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
