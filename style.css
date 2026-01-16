@@ -131,3 +131,60 @@ body {
     .main-content { flex-direction: column-reverse; height: auto; gap: 40px; }
     .side-bar { width: 100%; flex: none; height: auto; }
 }
+
+/* --- About 页面专用扩展 --- */
+
+/* 标题样式 */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+/* 联系方式 */
+.contact-box {
+    margin-top: 40px;
+}
+
+.email-link {
+    font-size: 0.85rem;
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+}
+
+/* 右侧图片容器 */
+.image-presentation {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+.profile-image-wrapper {
+    width: 100%;
+    max-width: 800px; /* 稍微缩一点，增加呼吸感 */
+    aspect-ratio: 4 / 5; /* 这种比例放人像非常高级 */
+    overflow: hidden;
+    background: #111;
+}
+
+.profile-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 确保图片不变形地填满 */
+    filter: grayscale(20%); /* 稍微降一点饱和度，更有设计师味 */
+    transition: filter 0.5s;
+}
+
+.profile-image-wrapper img:hover {
+    filter: grayscale(0%);
+}
+
+/* 导航激活态：让用户知道自己在哪个页 */
+.nav-links a.active {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+}
