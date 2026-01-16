@@ -1,67 +1,100 @@
-/* --- 1. 全局基础重置 --- */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+/* --- 基础设置 --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: #000;
     color: #fff;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
     height: 100vh;
-    overflow: hidden; /* 保持首页和关于页不滚动，呈现纯净感 */
+    overflow: hidden; /* 保证单页不滚动的高级感 */
 }
 
-/* --- 2. 导航栏 (通用) --- */
+/* --- 统一导航栏 --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 60px 5%;
-    height: 160px; /* 固定高度确保不随内容跳动 */
+    padding: 60px 80px;
+    height: 160px;
 }
 
-.logo {
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-}
+.logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 4px; }
+.nav-links { display: flex; list-style: none; }
+.nav-links li { margin-left: 40px; }
+.nav-links a { color: #fff; text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
 
-.nav-links {
+/* --- 核心：对标 Demo 的分栏布局 --- */
+.main-layout {
     display: flex;
-    list-style: none;
-}
-
-.nav-links li { 
-    margin-left: 35px; 
-}
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #888;
-}
-
-/* --- 3. 核心布局容器 --- */
-.main-container {
-    display: flex;
-    padding: 0 5% 60px 5%;
+    padding: 0 80px 80px 80px;
     height: calc(100vh - 160px);
-    gap: 10%; /* 文字与视觉内容之间的呼吸感 */
+    gap: 100px; /* 侧边栏和内容的固定距离 */
 }
 
-/* --- 4. 左侧信息栏 (严格锁死宽度) --- */
-.side-info {
-    flex: 0 0 280px; /* 强制锁定宽度，模仿 P2/P4 的质感 */
+/* 左侧：严格锁定 300px */
+.left-sidebar {
+    flex: 0 0 300px; 
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
+
+.body-text {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.proficiencies-title { font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; }
+.proficiencies-list { font-size: 0.75rem; color: #666; }
+
+/* 社交链接 (解决变色和下划线问题) */
+.social-links { font-size: 0.75rem; letter-spacing: 1.5px; }
+.social-links a { color: #fff; text-decoration: none; transition: 0.3s; }
+.social-links a:hover { color: #888; }
+.separator { margin: 0 10px; color: #333; }
+
+/* --- 右侧：视频/图片展示区 --- */
+.right-content {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* 视频固定比例 */
+.video-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+.video-box iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+/* 关于页照片固定比例 */
+.photo-box {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 3 / 4;
+    background: #111;
+    overflow: hidden;
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
