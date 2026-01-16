@@ -124,3 +124,27 @@ body {
     .socials-bottom { position: static; margin-top: 40px; } /* 手机上取消绝对定位 */
     .navbar { padding: 40px; }
 }
+
+/* --- About 页面照片样式 --- */
+.profile-img {
+    max-width: 400px; /* 控制照片最大宽度，你可以改这个数字 */
+    width: 100%;      /* 手机上自适应 */
+    height: auto;
+    display: block;
+    /* 如果你想让照片有些设计感，可以加下面这行，不需要就删掉 */
+    box-shadow: 20px 20px 0px rgba(20, 20, 20, 1); 
+}
+
+/* 确保右侧区域里的内容是居中的 */
+.right-content {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+}
+
+/* 导航栏当前页高亮 (可选) */
+.nav-links a.active {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 4px;
+}
