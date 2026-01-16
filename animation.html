@@ -1,101 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Animation — Sarah Zhao</title>
-  <meta name="description" content="Animation works by Sarah Zhao." />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation | Sarah Zhao</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">
-        <span class="brand-mark">◆</span>
-        <span class="brand-text">Sarah Zhao</span>
-      </a>
-
-      <nav class="nav" aria-label="Primary">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="motion.html">Motion</a>
-        <a class="nav-link is-active" href="animation.html">Animation</a>
-        <a class="nav-link" href="illustration.html">Illustration</a>
-        <a class="nav-link" href="about.html">About</a>
-      </nav>
-
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main id="main" class="page">
-    <section class="page-head">
-      <div class="container">
-        <h1>Animation</h1>
-        <p class="muted">Short clips and studies. Replace the placeholders with your videos later.</p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="clip-grid">
-
-          <article class="clip-card">
-            <div class="media-frame">
-              <video controls aria-label="Animation clip 01">
-                <!-- <source src="assets/video/clip-01.mp4" type="video/mp4" /> -->
-                Sorry, your browser does not support embedded videos.
-              </video>
-            </div>
-            <div class="clip-info">
-              <h3>Animation Clip 01</h3>
-              <p class="muted">One-line note: goal / technique / timing focus.</p>
-            </div>
-          </article>
-
-          <article class="clip-card">
-            <div class="media-frame">
-              <video controls aria-label="Animation clip 02">
-                <!-- <source src="assets/video/clip-02.mp4" type="video/mp4" /> -->
-              </video>
-            </div>
-            <div class="clip-info">
-              <h3>Animation Clip 02</h3>
-              <p class="muted">One-line note: goal / technique / timing focus.</p>
-            </div>
-          </article>
-
-          <article class="clip-card">
-            <div class="media-frame">
-              <video controls aria-label="Animation clip 03">
-                <!-- <source src="assets/video/clip-03.mp4" type="video/mp4" /> -->
-              </video>
-            </div>
-            <div class="clip-info">
-              <h3>Animation Clip 03</h3>
-              <p class="muted">One-line note: goal / technique / timing focus.</p>
-            </div>
-          </article>
-
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">SARAH ZHAO</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="motion.html">Motion</a></li>
+                    <li><a href="animation.html" class="active">Animation</a></li>
+                    <li><a href="illustration.html">Illustration</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <button class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            </nav>
         </div>
-      </div>
-    </section>
-  </main>
+    </header>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p class="muted">© <span id="year"></span> Sarah Zhao.</p>
-      <div class="footer-links">
-        <a href="motion.html">Motion</a>
-        <a href="about.html">About</a>
-      </div>
-    </div>
-  </footer>
+    <main class="container">
+        <div class="page-header">
+            <h1>Animation</h1>
+        </div>
 
-  <script src="assets/js/main.js"></script>
+        <div class="grid-gallery">
+            <a href="animation/anim-01.html" class="card">
+                <div class="media-placeholder">▶ Play Anim 01</div>
+            </a>
+            <a href="animation/anim-02.html" class="card">
+                <div class="media-placeholder">▶ Play Anim 02</div>
+            </a>
+            <a href="animation/anim-03.html" class="card">
+                <div class="media-placeholder">▶ Play Anim 03</div>
+            </a>
+            <a href="animation/anim-04.html" class="card">
+                <div class="media-placeholder">▶ Play Anim 04</div>
+            </a>
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
