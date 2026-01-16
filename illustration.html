@@ -1,101 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Illustration — Sarah Zhao</title>
-  <meta name="description" content="Illustration gallery by Sarah Zhao." />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illustration | Sarah Zhao</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">
-        <span class="brand-mark">◆</span>
-        <span class="brand-text">Sarah Zhao</span>
-      </a>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">Sarah Zhao</a>
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="motion.html" class="nav-link">Motion</a>
+                <a href="animation.html" class="nav-link">Animation</a>
+                <a href="illustration.html" class="nav-link active">Illustration</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+            <button class="hamburger" onclick="toggleMenu()">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </button>
+        </div>
+    </header>
 
-      <nav class="nav" aria-label="Primary">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="motion.html">Motion</a>
-        <a class="nav-link" href="animation.html">Animation</a>
-        <a class="nav-link is-active" href="illustration.html">Illustration</a>
-        <a class="nav-link" href="about.html">About</a>
-      </nav>
-
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main id="main" class="page">
-    <section class="page-head">
-      <div class="container">
-        <h1>Illustration</h1>
-        <p class="muted">A gallery-style layout. Replace placeholders with images later.</p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="masonry">
-          <!-- Replace each placeholder div with an <img> later -->
-          <figure class="tile">
-            <div class="img placeholder tall"></div>
-            <figcaption class="muted">Caption / series title (optional)</figcaption>
-          </figure>
-
-          <figure class="tile">
-            <div class="img placeholder"></div>
-            <figcaption class="muted">Caption / series title (optional)</figcaption>
-          </figure>
-
-          <figure class="tile">
-            <div class="img placeholder wide"></div>
-            <figcaption class="muted">Caption / series title (optional)</figcaption>
-          </figure>
-
-          <figure class="tile">
-            <div class="img placeholder"></div>
-            <figcaption class="muted">Caption / series title (optional)</figcaption>
-          </figure>
-
-          <figure class="tile">
-            <div class="img placeholder tall"></div>
-            <figcaption class="muted">Caption / series title (optional)</figcaption>
-          </figure>
-
-          <figure class="tile">
-            <div class="img placeholder"></div>
-            <figcaption class="muted">Caption / series title (optional)</figcaption>
-          </figure>
+    <main class="container">
+        <div class="hero-split" style="padding-bottom: 40px;">
+            <div class="hero-bio">
+                <h1><strong>Illustration.</strong><br>Visual Development & Style Frames.</h1>
+            </div>
         </div>
 
-        <!-- Example image snippet (use later)
-        <figure class="tile">
-          <img class="img" src="assets/img/thumbs/ill-01.jpg" alt="Illustration title" loading="lazy" />
-          <figcaption class="muted">Series name • 2026</figcaption>
-        </figure>
-        -->
+        <div class="grid-3col">
+            <div class="card"><div class="media-box"><img src="https://placehold.co/400x500/1a1a1a/FFF?text=Art+1" alt=""></div></div>
+            <div class="card"><div class="media-box"><img src="https://placehold.co/400x400/1a1a1a/FFF?text=Art+2" alt=""></div></div>
+            <div class="card"><div class="media-box"><img src="https://placehold.co/400x600/1a1a1a/FFF?text=Art+3" alt=""></div></div>
+            <div class="card"><div class="media-box"><img src="https://placehold.co/400x500/1a1a1a/FFF?text=Art+4" alt=""></div></div>
+            <div class="card"><div class="media-box"><img src="https://placehold.co/400x400/1a1a1a/FFF?text=Art+5" alt=""></div></div>
+            <div class="card"><div class="media-box"><img src="https://placehold.co/400x550/1a1a1a/FFF?text=Art+6" alt=""></div></div>
+        </div>
+    </main>
 
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p class="muted">© <span id="year"></span> Sarah Zhao.</p>
-      <div class="footer-links">
-        <a href="animation.html">Animation</a>
-        <a href="about.html">About</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
