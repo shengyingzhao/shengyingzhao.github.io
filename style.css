@@ -1,5 +1,9 @@
-/* --- 基础设置 --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* --- 1. 全局重置与基础设定 --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 body {
     background-color: #000;
@@ -7,73 +11,133 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     min-height: 100vh;
-    padding: 60px 80px; /* 全局大边距 */
+    overflow-x: hidden; /* 防止横向滚动 */
 }
 
-/* --- 统一导航栏 --- */
+/* --- 2. 导航栏：与内容边缘严格对齐 --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 80px;
+    padding: 60px 5%; /* 使用百分比边距，确保大屏下也好看 */
+    height: 160px;
 }
 
-.logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 4px; }
-.nav-links { display: flex; list-style: none; }
-.nav-links li { margin-left: 40px; }
+.logo { 
+    font-size: 1.2rem; 
+    font-weight: 700; 
+    letter-spacing: 4px; 
+    text-transform: uppercase;
+}
+
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+}
+
+.nav-links li { 
+    margin-left: 40px; 
+}
+
 .nav-links a { 
     color: #fff; 
     text-decoration: none; 
     font-size: 0.75rem; 
     letter-spacing: 2px; 
-    text-transform: uppercase; 
+    text-transform: uppercase;
+    transition: opacity 0.3s;
 }
 
-/* --- 页面内容布局 --- */
-.main-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 左右平分 */
-    gap: 100px;
-    align-items: start;
+.nav-links a:hover { opacity: 0.6; }
+
+/* --- 3. 核心布局容器 (首页与关于页通用) --- */
+.main-layout {
+    display: flex;
+    padding: 0 5% 80px 5%;
+    gap: 60px; /* 文字与内容之间的精致间距 */
+    align-items: flex-start;
 }
 
-/* 左侧文字区 */
-.left-side {
-    max-width: 450px; /* 限制文字宽度，保持精致感 */
+/* 左侧文字区：收紧宽度，突出右侧视频 */
+.left-sidebar {
+    flex: 0 0 300px; /* 固定宽度 300px，不随视频变大而撑开 */
+    display: flex;
+    flex-direction: column;
 }
 
-.intro-text {
-    font-size: 0.95rem;
+.body-text {
+    font-size: 0.85rem;
     font-weight: 300;
-    color: #eee;
-    margin-bottom: 40px;
+    color: #ccc;
+    margin-bottom: 30px;
+    text-align: justify;
 }
 
-.proficiencies { margin-bottom: 50px; }
-.proficiencies h3 { font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px; }
-.proficiencies p { font-size: 0.8rem; color: #777; }
+.proficiencies-group {
+    margin-top: 10px;
+}
 
-/* 奖项 Award 部分 */
-.awards-section { margin-top: 60px; border-top: 1px solid #222; padding-top: 40px; }
-.awards-section h3 { font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px; color: #555; }
-.award-item { font-size: 0.85rem; margin-bottom: 10px; color: #aaa; }
+.proficiencies-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: block;
+}
 
-/* 右侧视觉区 */
-.right-side { width: 100%; }
+.proficiencies-list {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.7;
+}
 
-.video-wrapper { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #111; }
-.video-wrapper iframe { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
+/* 社交链接：修复蓝色与下划线 */
+.social-links {
+    margin-top: 50px;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+}
 
-.photo-wrapper { width: 100%; max-width: 400px; aspect-ratio: 3 / 4; background: #111; overflow: hidden; }
-.photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
-/* 社交链接 (底部固定) */
-.social-links { margin-top: 100px; font-size: 0.75rem; letter-spacing: 1px; }
-.social-links a { color: #fff; text-decoration: none; margin-right: 20px; }
 .social-links a:hover { color: #888; }
+.separator { margin: 0 10px; color: #333; }
 
-/* 响应式 */
-@media (max-width: 1024px) {
-    .main-content { grid-template-columns: 1fr; gap: 50px; }
-    body { padding: 40px; }
+/* --- 4. 右侧内容区：大幅度扩大的视频/照片 --- */
+.right-content {
+    flex: 1; /* 自动占据剩余的所有空间 */
+    display: flex;
+    justify-content: flex-end; /* 内容靠右对齐 */
 }
+
+/* 视频外壳：对标大图尺寸 */
+.video-box {
+    width: 100%;
+    max-width: 1200px; /* 允许视频变得非常大 */
+    aspect-ratio: 16 / 9;
+    background: #000;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+}
+
+.video-box iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 关于页照片外壳 */
+.photo-box {
+    width: 100%;
+    max-width: 500px; /* 照片保持精致比例，不宜过大 */
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale
