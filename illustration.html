@@ -1,44 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Illustration | Sarah Zhao</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Illustration — Sarah Zhao</title>
+  <meta name="description" content="Illustration gallery by Sarah Zhao." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-<body>
 
-    <nav class="navbar">
-        <div class="logo">SARAH ZHAO</div>
-        
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">◆</span>
+        <span class="brand-text">Sarah Zhao</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="motion.html">Motion</a>
+        <a class="nav-link" href="animation.html">Animation</a>
+        <a class="nav-link is-active" href="illustration.html">Illustration</a>
+        <a class="nav-link" href="about.html">About</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <section class="page-head">
+      <div class="container">
+        <h1>Illustration</h1>
+        <p class="muted">A gallery-style layout. Replace placeholders with images later.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="masonry">
+          <!-- Replace each placeholder div with an <img> later -->
+          <figure class="tile">
+            <div class="img placeholder tall"></div>
+            <figcaption class="muted">Caption / series title (optional)</figcaption>
+          </figure>
+
+          <figure class="tile">
+            <div class="img placeholder"></div>
+            <figcaption class="muted">Caption / series title (optional)</figcaption>
+          </figure>
+
+          <figure class="tile">
+            <div class="img placeholder wide"></div>
+            <figcaption class="muted">Caption / series title (optional)</figcaption>
+          </figure>
+
+          <figure class="tile">
+            <div class="img placeholder"></div>
+            <figcaption class="muted">Caption / series title (optional)</figcaption>
+          </figure>
+
+          <figure class="tile">
+            <div class="img placeholder tall"></div>
+            <figcaption class="muted">Caption / series title (optional)</figcaption>
+          </figure>
+
+          <figure class="tile">
+            <div class="img placeholder"></div>
+            <figcaption class="muted">Caption / series title (optional)</figcaption>
+          </figure>
         </div>
 
-        <ul class="nav-links">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="motion.html">MOTION</a></li>
-            <li><a href="animation.html">ANIMATION</a></li>
-            <li><a href="illustration.html" class="active">ILLUSTRATION</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-        </ul>
-    </nav>
+        <!-- Example image snippet (use later)
+        <figure class="tile">
+          <img class="img" src="assets/img/thumbs/ill-01.jpg" alt="Illustration title" loading="lazy" />
+          <figcaption class="muted">Series name • 2026</figcaption>
+        </figure>
+        -->
 
-    <div class="scatter-container">
-        <a href="#" class="polaroid">
-            <img src="1.jpg" alt="Illustration 1">
-        </a>
+      </div>
+    </section>
+  </main>
 
-        <a href="#" class="polaroid">
-            <img src="2.jpg" alt="Illustration 2">
-        </a>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p class="muted">© <span id="year"></span> Sarah Zhao.</p>
+      <div class="footer-links">
+        <a href="animation.html">Animation</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </footer>
 
-        <a href="#" class="polaroid">
-            <img src="3.jpg" alt="Illustration 3">
-        </a>
-
-        <a href="#" class="polaroid">
-            <img src="4.jpg
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
