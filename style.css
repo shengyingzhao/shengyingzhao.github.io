@@ -1,150 +1,81 @@
-/* --- 1. 全局设置 --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* =========================================
+   1. 全局设置 (Global)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     background-color: #000; /* 纯黑背景 */
-    color: #999; /* 高级灰色字体 */
-    font-family: 'Inter', sans-serif;
-    /* 锁定屏幕高度，防止出现多余滚动条，让布局更像一个应用 */
-    height: 100vh; 
-    overflow: hidden; 
+    color: #999;            /* 高级灰字体 */
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    /* 这里设置 min-height: 100vh 保证页面至少占满一屏
+       overflow-x: hidden 防止图片旋转导致横向出现滚动条
+    */
+    min-height: 100vh;
+    overflow-x: hidden; 
     display: flex;
     flex-direction: column;
 }
 
-/* --- 2. 导航栏 --- */
+/* =========================================
+   2. 导航栏 (Navbar)
+   ========================================= */
 .navbar {
-    /* 固定高度，不被挤压 */
-    flex: 0 0 120px; 
+    flex: 0 0 auto; /* 导航栏高度固定 */
+    height: 120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 60px; /* 左右边距 */
+    padding: 0 60px;
 }
 
-.logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #fff;
+}
 
-.nav-links { display: flex; list-style: none; gap: 30px; }
-.nav-links a { 
-    color: #666; 
-    text-decoration: none; 
-    font-size: 0.75rem; 
-    letter-spacing: 2px; 
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
     transition: color 0.3s;
 }
-.nav-links a:hover { color: #fff; }
 
-/* --- 3. 核心左右布局 --- */
-.home-container {
-    flex: 1; /* 填满剩下的所有空间 */
-    display: flex; /* 开启左右排版 */
-    padding: 0 60px 60px; /* 上右下左边距 */
-    gap: 60px; /* 左右两块中间的缝隙 */
-    align-items: center; /* 垂直居中 */
-    max-width: 1920px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-/* --- 左侧区域 --- */
-.left-content {
-    width: 35%; /* 文字区域宽度 */
-    height: 100%; /* 占满高度以便放置底部链接 */
-    display: flex;
-    flex-direction: column; /* 竖着排：上文 - 下链 */
-    justify-content: center; /* 内容垂直居中 */
-    position: relative; /* 为绝对定位做准备 */
-}
-
-.bio-text {
-    /* 把文字稍微往上提一点，视觉更平衡 */
-    margin-bottom: 80px; 
-}
-
-.intro {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 40px;
-    color: #aaa;
-}
-
-.label {
-    display: block;
-    color: #fff;
-    font-weight: 700;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-}
-.skills p { font-size: 0.85rem; color: #777; line-height: 1.5; }
-
-/* 社交链接 (强制放在左侧最底部) */
-.socials-bottom {
-    position: absolute;
-    bottom: 20px; /* 距离底部 20px */
-    left: 0;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-.socials-bottom a { color: #fff; text-decoration: none; transition: 0.3s; }
-.socials-bottom a:hover { color: #888; }
-.sep { margin: 0 10px; color: #333; }
-
-/* --- 右侧区域 (大视频) --- */
-.right-content {
-    width: 65%; /* 视频区域宽度，给大一点 */
-    height: 100%;
-    display: flex;
-    align-items: center; /* 让视频垂直居中 */
-    justify-content: center;
-}
-
-.video-wrapper {
-    width: 100%;
-    /* 强制保持 16:9 比例 */
-    aspect-ratio: 16 / 9; 
-    background: #000;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5); /* 悬浮感阴影 */
-}
-
-.video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-}
-
-/* --- 手机端适配 --- */
-@media (max-width: 1024px) {
-    body { overflow-y: auto; height: auto; display: block; }
-    .home-container {
-        flex-direction: column-reverse; /* 手机上视频在上面，文字在下面 */
-        padding: 40px;
-        gap: 40px;
-    }
-    .left-content, .right-content { width: 100%; height: auto; }
-    .socials-bottom { position: static; margin-top: 40px; } /* 手机上取消绝对定位 */
-    .navbar { padding: 40px; }
-}
-
-/* --- About 页面照片样式 --- */
-.profile-img {
-    max-width: 400px; /* 控制照片最大宽度，你可以改这个数字 */
-    width: 100%;      /* 手机上自适应 */
-    height: auto;
-    display: block;
-    /* 如果你想让照片有些设计感，可以加下面这行，不需要就删掉 */
-    box-shadow: 20px 20px 0px rgba(20, 20, 20, 1); 
-}
-
-/* 确保右侧区域里的内容是居中的 */
-.right-content {
-    display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center;     /* 垂直居中 */
-}
-
-/* 导航栏当前页高亮 (可选) */
+.nav-links a:hover,
 .nav-links a.active {
     color: #fff;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 4px;
 }
+
+/* =========================================
+   3. Home & About 通用布局 (Split Layout)
+   ========================================= */
+.home-container {
+    flex: 1; /* 填满剩余空间 */
+    display: flex;
+    padding: 0 60px 40px; /* 上 左右 下 */
+    gap: 60px;
+    align-items: center; /* 垂直居中 */
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    /* 保证内容区有足够高度来放置底部链接 */
+    min-height: 600px; 
+    position: relative;
+}
+
+/* --- 左侧区域 (文字+链接) --- */
+.left-content {
+    width: 35%;
+    height: 100
